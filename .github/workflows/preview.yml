@@ -8,63 +8,37 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  update:
-    name: EAS Update
+  preview:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Debug - Check if token exists
-        run: |
-          if [ -n "${{ secrets.EXPO_TOKEN }}" ]; then
-            echo "✅ EXPO_TOKEN secret is available."
-          else
-            echo "❌ EXPO_TOKEN secret is NOT available."
-            echo "Please add EXPO_TOKEN to your GitHub repository secrets."
-            exit 1
-          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          cache: 'npm'
-
-      - name: Restore Metro Cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.expo
-            ~/.cache/metro
-            node_modules/.cache
-          key: ${{ runner.os }}-expo-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-expo-
+          node-version: 20
+          cache: npm
 
       - name: Setup EAS
-        uses: expo/expo-github-action@v8
+        uses: expo/expo-github-action@v10
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: npm ci
 
-      # On Pull Requests: Create a preview and comment on the PR
-      - name: Create preview (PR)
+      # PR Preview Update
+      - name: PR Preview Update
         if: github.event_name == 'pull_request'
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command: eas update --auto
+        run: npx eas update --branch="pr-${{ github.event.pull_request.number }}" --message="PR Preview" --non-interactive
 
-      # On Push to Branch: Publish update and show QR code in Job Summary
-      - name: Publish update (Branch)
+      # Branch Persistent Update
+      - name: Branch Preview Update
         if: github.event_name == 'push'
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command: eas update --auto
+        run: npx eas update --branch="${{ github.ref_name }}" --message="Branch Preview" --non-interactive
