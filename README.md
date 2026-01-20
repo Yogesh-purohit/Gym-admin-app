@@ -2,6 +2,14 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## 📱 Branch Previews
+
+Scan this QR code with **Expo Go** (Android) or the **Camera app** (iOS) to view the latest version from the \`dev\` branch:
+
+![Dev Branch Preview](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=exp://u.expo.dev/2abf0ce8-e4cd-4f3e-ad8f-cdaeeda4eb25?channel-name=dev)
+
+> **Note:** This QR code points to the \`dev\` channel. Updates are automatically published here when pushing to the \`dev\` branch.
+
 ## Get started
 
 1. Install dependencies
