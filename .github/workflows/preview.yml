@@ -2,7 +2,7 @@ name: Expo Preview
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   preview:
@@ -17,18 +17,17 @@ jobs:
       - name: 🏗 Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20
           cache: npm
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
+      - name: 🏗 Setup EAS CLI
+        uses: expo/expo-github-action@v10
         with:
-          token: ${{ secrets.EXPO_TOKEN }}
-          expo-version: latest
           eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
         run: npm ci
 
       - name: 🚀 Create Preview Update
-        run: eas update --auto --branch="${{ github.head_ref }}" --message="${{ github.event.head_commit.message }}" --non-interactive
+        run: npx eas update --auto --branch="${{ github.head_ref }}" --message="${{ github.event.head_commit.message }}" --non-interactive

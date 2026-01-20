@@ -51,6 +51,12 @@
         "projectId": "2abf0ce8-e4cd-4f3e-ad8f-cdaeeda4eb25"
       }
     },
-    "owner": "yogesh_purohit_17"
+    "owner": "yogesh_purohit_17",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2abf0ce8-e4cd-4f3e-ad8f-cdaeeda4eb25"
+    }
   }
 }
