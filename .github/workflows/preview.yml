@@ -3,8 +3,7 @@ name: Expo Preview
 on:
   push:
     branches:
-      - main
-      - dev
+      - '**'
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -63,7 +62,9 @@ jobs:
         with:
           command: eas update --auto
 
-      # On Push to Branch: Publish the update directly
+      # On Push to Branch: Publish update and show QR code in Job Summary
       - name: Publish update (Branch)
         if: github.event_name == 'push'
-        run: eas update --auto
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto
