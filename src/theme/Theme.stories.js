@@ -21,7 +21,7 @@ const Section = ({ title, children }) => {
                 fontSize: typography.size.l,
                 fontWeight: 'bold',
                 marginBottom: spacing.m,
-                color: colors.text.primary
+                color: colors.text.secondary
             }}>
                 {title}
             </Text>
