@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export const Input = ({
     label,

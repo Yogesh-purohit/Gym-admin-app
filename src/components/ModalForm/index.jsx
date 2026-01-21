@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { useTheme } from '../theme';
-import { Button } from './Button';
-import { Card } from './Card';
+import { useTheme } from '../../theme';
+import { Button } from '../Button';
+import { Card } from '../Card';
 
 export const ModalForm = ({
     visible,

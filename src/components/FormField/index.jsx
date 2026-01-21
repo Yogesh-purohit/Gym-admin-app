@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Input } from './Input';
+import { Input } from '../Input';
 
 export const FormField = ({ control, name, rules, ...props }) => {
     return (

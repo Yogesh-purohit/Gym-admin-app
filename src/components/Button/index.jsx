@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export const Button = ({
     title,

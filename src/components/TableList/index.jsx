@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet, RefreshControl } from 'react-native';
-import { useTheme } from '../theme';
-import { Card } from './Card';
+import { useTheme } from '../../theme';
+import { Card } from '../Card';
 
 export const TableList = ({
     data,

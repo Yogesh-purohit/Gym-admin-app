@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export const Card = ({ children, style, variant = 'elevated', noPadding = false }) => {
     const { colors, spacing, radii, shadows } = useTheme();

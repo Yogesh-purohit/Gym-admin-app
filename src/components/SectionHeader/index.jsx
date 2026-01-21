@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export const SectionHeader = ({ title, action, onActionPress, style }) => {
     const { colors, spacing, typography } = useTheme();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export const StatusBadge = ({ status, variant = 'neutral' }) => {
     const { colors, spacing, radii, typography } = useTheme();
